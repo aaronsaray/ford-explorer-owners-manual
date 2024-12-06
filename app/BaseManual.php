@@ -25,7 +25,7 @@ abstract class BaseManual
 
     public function createPdf(): void
     {
-        error_reporting(0);
+        error_reporting(E_ERROR);
 
         $mpdf = new Mpdf();
         $mpdf->setBasePath('https://www.foexplorer.com/');

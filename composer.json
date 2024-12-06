@@ -6,5 +6,20 @@
     },
     "require": {
         "mpdf/mpdf": "^8.2"
+    },
+    "require-dev": {
+        "symplify/vendor-patches": "^11.3"
+    },
+    "config": {
+        "allow-plugins": {
+            "cweagans/composer-patches": true
+        }
+    },
+    "extra": {
+        "patches": {
+            "mpdf/mpdf": [
+                "patches/mpdf-mpdf-src-tag-blocktag-php.patch"
+            ]
+        }
     }
 }

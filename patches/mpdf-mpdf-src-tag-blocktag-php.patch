@@ -1,0 +1,13 @@
+--- ../src/Tag/BlockTag.php
++++ ../src/Tag/BlockTag.php
+@@ -214,8 +214,8 @@
+ 				if ($this->mpdf->usingCoreFont) {
+ 					$ls = str_repeat(chr(160) . chr(160), ($this->mpdf->listlvl - 1) * 2) . $blt . ' ';
+ 				} else {
+-					$ls = str_repeat("\xc2\xa0\xc2\xa0", ($this->mpdf->listlvl - 1) * 2) . $blt . ' ';
+-				}
++                    $ls = str_repeat("\xc2\xa0\xc2\xa0", max([($this->mpdf->listlvl - 1) * 2, 0])) . $blt . ' ';
++                }
+ 				$this->mpdf->_saveCellTextBuffer($ls);
+ 				$this->mpdf->cell[$this->mpdf->row][$this->mpdf->col]['s'] += $this->mpdf->GetStringWidth($ls);
+ 			}
