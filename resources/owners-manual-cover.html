@@ -1,0 +1,40 @@
+<style>
+    body {
+        font-family: sans-serif;
+    }
+    .fodexp_head, .fodexp_rightblock, .fodexp_last {
+        display: none;
+    }
+    .break-after-this {
+        page-break-after: always;
+    }
+    #logo {
+        text-align: center;
+        padding-top: 200pt;
+    }
+    #title {
+        margin-top: 100pt;
+        font-size: 22pt;
+        text-align: center;
+    }
+    #subtitle {
+        font-size: 10pt;
+        text-align: center;
+        font-weight: normal;
+        padding-top: 200pt;
+    }
+    .page {
+        font-size: 10pt;
+        text-align: right;
+        color: #888;
+        font-weight: bold;
+    }
+    .first-page {
+        padding: 60pt 30pt 0 30pt;
+        font-size: 9pt;
+    }
+</style>
+
+<div id="logo"><img src="https://www.foexplorer.com/images/logo.png"></div>
+<h1 id="title">{{ title }}</h1>
+<h2 id="subtitle" class="break-after-this"><a href="https://www.foexplorer.com/">foexplorer.com</a></h2>

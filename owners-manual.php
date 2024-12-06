@@ -1,0 +1,8 @@
+<?php
+
+declare(strict_types=1);
+
+require __DIR__ . '/vendor/autoload.php';
+
+$manual = new \App\OwnersManual();
+$manual->createPdf();
