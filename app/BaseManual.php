@@ -26,6 +26,8 @@ abstract class BaseManual
     public function createPdf(): void
     {
         error_reporting(E_ERROR);
+        ini_set('memory_limit', '20G');
+        ini_set("pcre.backtrack_limit", '10000000');
 
         $mpdf = new Mpdf();
         $mpdf->setBasePath('https://www.foexplorer.com/');
@@ -36,7 +38,15 @@ abstract class BaseManual
         foreach ($this->urls() as $url) {
             print "Processing $url";
 
-            $html = file_get_contents($url);
+            $count = 0;
+            do {
+                if ($count > 1) {
+                    sleep(5); // allow a bit of a breather
+                }
+                $count++;
+                $html = file_get_contents($url);
+            } while ($html !== false && $count < 3);
+
             $start = stripos($html, '<div align="center">');
             $end = stripos($html, '<div class="fodexp_rightblock">');
 
