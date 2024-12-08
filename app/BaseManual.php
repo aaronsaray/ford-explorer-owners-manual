@@ -41,11 +41,17 @@ abstract class BaseManual
             $count = 0;
             do {
                 if ($count > 1) {
-                    sleep(5); // allow a bit of a breather
+                    print "Trying again - first 30 seconds sleep.";
+                    sleep(30); // allow a bit of a breather
+                    print " Done. Trying again...\n";
                 }
                 $count++;
+                if ($count > 3) {
+                    print "Unable to load.\n";
+                    die();
+                }
                 $html = file_get_contents($url);
-            } while ($html !== false && $count < 3);
+            } while ($html === false);
 
             $start = stripos($html, '<div align="center">');
             $end = stripos($html, '<div class="fodexp_rightblock">');
